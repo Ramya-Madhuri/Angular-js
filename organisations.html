@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Organisation Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div ng-app = "myApp" class = "container" style="width:550px">
+<div style="text-align:center;color:blue">
+<h3><b>Organisation Form</b></h3>
+</div>
+<div ng-controller = "OrganisationController">
+<div align="right">
+<a href="#" ng-click="searchUser()">{{title}}</a>
+</div>
+<form class="well" name="neworg">
+<div class = "form-group" ng-class="{ 'has-error' : neworg.name.$invalid && !neworg.name.$pristine }">
+<label for = "name"> User name:  </label>
+<input type = "text" id = "name" class = "form-control" placeholder = "Enter User name " ng-model= "name" name="name" required>
+<p ng-show="neworg.name.$invalid && !neworg.name.$pristine">
+	User name is required
+</p>
+</p>
+</div>
+		
+		
+<div class = "form-group">
+<label for = "email"> Email:  </label>
+<input type = "email" id = "email" class = "form-control" placeholder = "Enter Email " ng-model = "email" name="email" required>
+<p ng-show="neworg.email.$invalid && !neworg.email.$pristine">
+	Invalid Email
+</p>
+</div>
+<div class = "form-group">
+<label for = "password"> Password:  </label>
+<input type = "password" id = "password" class = "form-control" placeholder = "Enter Password " ng-model = "password" name="password" required>
+<p ng-show="neworg.password.$invalid && !neworg.password.$pristine">
+	Invalid Password
+</p>
+</div>
+<div class = "form-group">
+<label for = "organisation"> Organisation/Company:  </label>
+<input type = "text" id = "organisation" class = "form-control" placeholder = "Enter Organisation/Company " ng-model = "organisation" name="organisation" required>
+<p ng-show="neworg.organisation.$invalid && !neworg.organisation.$pristine">
+	Invalid Organisation/Company
+</p>
+</div>
+<div class = "form-group">
+<label for = "house"> Address:  </label>
+<textarea id = "house" class = "form-control" placeholder = "Enter Address" ng-model = "address" name="address"></textarea>
+</div>
+<input type="button" class="btn btn-primary" ng-click="saveContact()" class="btn btn-primary" value = "Submit">
+</form>
+<div><h4><b>Organisation Detail</b></h4>
+<table class = "table">
+<tbody>
+<tr class = "info">
+<td>User name: {{neworg.name.$modelValue}}</td>
+</tr>
+<tr class = "info">
+<td>Email: {{neworg.email.$modelValue}}</td>
+</tr>
+<tr class = "info">
+<td>Password: {{neworg.password.$modelValue}}</td>
+</tr >
+<tr class = "info">
+<td>Organisation: {{neworg.organisation.$modelValue}}</td>
+</tr>
+<tr class = "info">
+<td>Address: {{neworg.address.$modelValue.split("\n").join(", ")}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>
